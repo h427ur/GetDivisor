@@ -2,30 +2,32 @@
 {
     static void Main(string[] args)
     {
-        int input = 0;
+        string input = String.Empty;
+        int inputInt = 0;
         List<int> divisors = new();
 
         if (args != null && args.Length != 0)
         {
-            input = int.Parse(args[0]);
+            input = args[0];
         }
-        else
+
+        while (!int.TryParse(input, out inputInt))
         {
             Console.Write("정수 값을 입력하세요: ");
-            input = int.Parse(Console.ReadLine());
+            input = Console.ReadLine();
             Console.Write("\n");
         }
 
-        for (int i = 1; i < input + 1; i += 1)
+        for (int i = 1; i < inputInt + 1; i += 1)
         {
-            if (input % i == 0)
+            if (inputInt % i == 0)
             {
                 divisors.Add(i);
             }
         }
 
 
-        Console.Write($"{input}의 약수: ");
+        Console.Write($"{inputInt}의 약수: ");
         foreach (int item in divisors)
         {
             Console.Write($"{item} ");
